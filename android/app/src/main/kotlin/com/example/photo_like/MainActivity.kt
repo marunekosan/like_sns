@@ -1,4 +1,4 @@
-package com.example.photo_like
+package com.example.like_sns
 
 import io.flutter.embedding.android.FlutterActivity
 

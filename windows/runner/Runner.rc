@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "photo_like" "\0"
+            VALUE "FileDescription", "like_sns" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "photo_like" "\0"
+            VALUE "InternalName", "like_sns" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "photo_like.exe" "\0"
-            VALUE "ProductName", "photo_like" "\0"
+            VALUE "OriginalFilename", "like_sns.exe" "\0"
+            VALUE "ProductName", "like_sns" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

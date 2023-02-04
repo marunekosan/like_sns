@@ -1,6 +1,6 @@
 {
-    "name": "photo_like",
-    "short_name": "photo_like",
+    "name": "like_sns",
+    "short_name": "like_sns",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
