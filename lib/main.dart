@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 //package
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:like_sns/views/bottom_navigation_bar.dart';
 
 //models
 import 'package:like_sns/models/main_model.dart';
 import 'package:like_sns/views/login_page.dart';
+import 'models/login_model.dart';
+import 'package:like_sns/models/bottom_navigation_bar_model.dart';
 
 //options
 import 'firebase_options.dart';
@@ -16,7 +19,6 @@ import 'firebase_options.dart';
 //route
 import 'package:like_sns/routes/routes.dart' as routes;
 
-import 'models/login_model.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,33 +56,27 @@ class MyHomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final MainModel mainModel = ref.watch(mainProvider);
+    final BottomNavigationBarModel bottomNavigationBarModel = ref.watch(bottomNavigationBarProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () => routes.toSignupPage(context: context),
-              child: Text("サインアップページ")
-            ),
-            ElevatedButton(
-              onPressed: () => routes.toLoginPage(context: context),
-              child: Text("ログインページ")
-            )
+      body: mainModel.isLoading ?
+        const Center(
+          child: Text("ロード中"),
+        ) : 
+        PageView(
+          controller: bottomNavigationBarModel.pageController,
+          onPageChanged: (index) => bottomNavigationBarModel.onPageChanged(index: index),
+          // childrenの個数はElementsの数
+          children: [
+            Container(child: Text("home"),),
+            Container(child: Text("search"),),
+            Container(child: Text("profile"),),
           ],
         ),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     mainModel.createUser(context: context);
-      //   },
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This
+      bottomNavigationBar: LikeSnsBottomNavigationBar(bottomNavigationBarModel: bottomNavigationBarModel),
     );
   }
 }
