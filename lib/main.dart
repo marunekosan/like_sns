@@ -19,6 +19,7 @@ import 'firebase_options.dart';
 //route
 import 'package:like_sns/routes/routes.dart' as routes;
 
+import 'package:like_sns/views/main/pforile_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -73,7 +74,7 @@ class MyHomePage extends ConsumerWidget {
           children: [
             Container(child: Text("home"),),
             Container(child: Text("search"),),
-            Container(child: Text("profile"),),
+            ProfileScreen(mainModel: mainModel,),
           ],
         ),
       bottomNavigationBar: LikeSnsBottomNavigationBar(bottomNavigationBarModel: bottomNavigationBarModel),
